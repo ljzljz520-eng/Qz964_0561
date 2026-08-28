@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "metrics": {
+    "production_loc": 2310,
+    "production_files": 30,
+    "production_packages": 9,
+    "test_files": 9,
+    "production_functions": 115,
+    "decision_points": 45
+  },
+  "persistence": {
+    "module": "go.etcd.io/bbolt",
+    "entities": ["Record", "User", "Event", "Audit"],
+    "reopen_test": "TestPersistenceSurvivesReopen"
+  },
+  "workflows": [
+    {"steps": ["接收木材资料", "校验来源和测量值", "保存 Record 与 Event", "展示登记结果"], "test": "TestWorkflowOne"},
+    {"steps": ["登记审核人员", "查看待审 Record", "写入 Confirmation 和 Audit", "归档处理状态"], "test": "TestWorkflowTwo"},
+    {"steps": ["提交过滤条件", "加载记录和事件", "计算风险统计", "展示报告与追踪信息"], "test": "TestWorkflowThree"}
+  ]
+}
